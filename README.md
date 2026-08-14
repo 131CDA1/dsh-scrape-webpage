@@ -20,7 +20,8 @@
 1. 把本仓库复制到目标 profile 的 `node_modules` 下:
 
    ```powershell
-   Copy-Item -Recurse <本仓库> "$env:DSH_HOME\profiles\web\node_modules\dsh-scrape-webpage"
+   git clone https://github.com/131CDA1/dsh-scrape-webpage.git
+   Copy-Item -Recurse .\dsh-scrape-webpage "$env:DSH_HOME\profiles\web\node_modules\dsh-scrape-webpage"
    ```
 
 2. 把 `cordis.patch.yml` 中的 insert 行合并进该 profile 的 `cordis.patch.yml`:
