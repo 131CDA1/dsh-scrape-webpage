@@ -15,7 +15,7 @@
 
 ## 📦 安装
 
-### 方式 A:安装到本地 profile
+### 安装到本地 profile
 
 1. 把本仓库复制到目标 profile 的 `node_modules` 下:
 
@@ -33,15 +33,6 @@
 
 3. 重启 DSH(Web/TUI),插件随宿主组合加载。
 
-### 方式 B:npm 安装
-
-```bash
-npm publish                       # 发布者(先 npm login)
-cd $DSH_HOME/profiles/web
-pnpm add dsh-scrape-webpage       # 使用者,再按方式 A 第 2 步加行、重启
-```
-
-> 安装前请把 `package.json` 中的 `repository` / `author` 占位符替换为你的 GitHub 信息。
 
 ## 🚀 使用
 
