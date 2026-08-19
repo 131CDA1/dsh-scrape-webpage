@@ -27,6 +27,11 @@
     "type": "git",
     "url": "git+https://github.com/131CDA1/dsh-scrape-webpage.git"
   },
+  "dsh": {
+    "bundle": {
+      "patch": "cordis.patch.yml"
+    }
+  },
   "bugs": {
     "url": "https://github.com/131CDA1/dsh-scrape-webpage/issues"
   },

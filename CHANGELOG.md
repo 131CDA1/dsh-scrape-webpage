@@ -16,3 +16,4 @@
 - 抓取链路:优先 web fetch provider,回退 shell/curl.exe;沙箱内默认执行
 - 沙箱审批升级:HTTPS TLS 受限时按 pwsh 工具契约,`sandbox_permissions="danger-full-access"` + justification 一次性授权
 - 发行版基础设施:`release/` 预构建附件 + `.github/workflows/release.yml` 打 tag 自动发版
+- bundle 打包:package.json 声明 `dsh.bundle.patch`(cordis.patch.yml),支持 `dsh plugin --profile <name> add` 一键安装并自动注册组合层
