@@ -1,0 +1,6 @@
+# dsh-scrape-webpage 组合补丁：把本包作为一行插入宿主组合。
+# 用法：把本包安装到 profile 可解析的位置（profile 的 node_modules 或全局安装），
+# 然后将此文件合并进目标 profile 的 cordis.patch.yml。
+- insert:
+    - id: scrape-webpage
+      name: dsh-scrape-webpage
