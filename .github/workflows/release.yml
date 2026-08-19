@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build release archive
+        run: |
+          VER="${GITHUB_REF_NAME#v}"
+          mkdir -p dist
+          zip -r "dist/dsh-scrape-webpage-v${VER}.zip" \
+            lib cordis.patch.yml package.json README.md LICENSE CHANGELOG.md
+          (cd dist && sha256sum "dsh-scrape-webpage-v${VER}.zip" > SHA256SUMS)
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/dsh-scrape-webpage-*.zip
+            dist/SHA256SUMS
+          generate_release_notes: true
