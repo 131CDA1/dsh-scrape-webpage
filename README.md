@@ -20,16 +20,26 @@
 
 > 前置:`dsh plugin` 转发给 pnpm,需要 `pnpm` 在 PATH 上;首次使用会自动初始化目标 profile。
 
-### 方式 A:`dsh plugin`(推荐)
+### 方式 A:从 npm 安装(推荐)
 
 ```powershell
-# ① 发布到 npm 后,registry 安装
+# 通过 dsh plugin 从 npm registry 安装并自动注册到 profile
 dsh plugin --profile web add dsh-scrape-webpage
+```
 
-# ② 或直接从 GitHub 安装(仓库推送后即可)
+如果自行管理 profile 的 `node_modules`,也可以在对应目录中直接使用 npm 安装:
+
+```powershell
+npm install dsh-scrape-webpage
+```
+
+### 方式 B:从 GitHub 或本地目录安装
+
+```powershell
+# 直接从 GitHub 安装
 dsh plugin --profile web add "github:131CDA1/dsh-scrape-webpage"
 
-# ③ 或本地目录调试(注意:必须显式 file: 前缀)
+# 本地目录调试(注意:必须显式 file: 前缀)
 dsh plugin --profile web add "file:D:\path\to\dsh-scrape-webpage"
 ```
 
@@ -38,7 +48,7 @@ dsh plugin --profile web add "file:D:\path\to\dsh-scrape-webpage"
 > ⚠️ 本地目录请用 `file:` 前缀。裸路径 / 相对路径会被 pnpm 当作 `link:` 协议,
 > 在 hoisted 布局下不会物化到 node_modules 顶层,导致启动时无法解析该包。
 
-### 方式 B:手动复制(离线兜底)
+### 方式 C:手动复制(离线兜底)
 
 ```powershell
 git clone https://github.com/131CDA1/dsh-scrape-webpage.git
@@ -103,13 +113,6 @@ if (registry !== undefined) {
 - 有 `web` fetch provider 的部署:直接走该 provider。
 - 无 fetch provider 的部署(内置回退):经 `shell` 服务调用 `curl.exe`(Windows 10 1803+ 自带;其他平台请确保 PATH 有 curl)。
 - 依赖宿主服务:`tools`、`systemPrompt`、`timer`(硬依赖);`web`、`shell`、`sandboxPolicy`、`approval`、`sessions`(可选,缺失时优雅报错)。
-
-## 🏷 发行版
-
-### 手动发布
-
-仓库的 [`release/`](release/) 目录包含预构建发行版文件:
-`dsh-scrape-webpage-v1.0.0.zip` 与 `SHA256SUMS`。在 GitHub 上创建 Release 时直接作为附件上传即可。
 
 ## 📄 License
 
