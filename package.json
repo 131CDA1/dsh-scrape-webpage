@@ -16,6 +16,9 @@
     "README.md",
     "LICENSE"
   ],
+  "scripts": {
+    "test": "node test/download-images.selftest.mjs"
+  },
   "keywords": [
     "dsh",
     "plugin",
